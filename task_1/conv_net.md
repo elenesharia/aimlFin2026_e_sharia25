@@ -193,6 +193,8 @@ The code below generates:
 
 ## Python code 
 
+```python
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -369,6 +371,7 @@ plt.show()
 
 print("Saved: traffic_windows.png, loss_curve.png, confusion_matrix.png")
 
+```
 
 
 ---
