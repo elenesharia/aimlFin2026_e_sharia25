@@ -200,9 +200,6 @@ import torch
 import torch.nn as nn
 from torch.utils.data import TensorDataset, DataLoader
 
-# -----------------------------
-# 1) Synthetic dataset generator
-# -----------------------------
 def make_windows(n_samples=2000, window_size=60, attack_ratio=0.5, seed=7):
     """
     Returns:
@@ -237,9 +234,6 @@ def make_windows(n_samples=2000, window_size=60, attack_ratio=0.5, seed=7):
     return X[idx], y[idx]
 
 
-# -----------------------------
-# 2) Train/test split + loaders
-# -----------------------------
 X, y = make_windows(n_samples=2500, window_size=60, attack_ratio=0.5, seed=7)
 
 split = int(0.8 * len(X))
@@ -260,9 +254,6 @@ train_loader = DataLoader(TensorDataset(X_train_t, y_train_t), batch_size=64, sh
 test_loader  = DataLoader(TensorDataset(X_test_t, y_test_t), batch_size=256, shuffle=False)
 
 
-# -----------------------------
-# 3) 1D CNN model
-# -----------------------------
 class DDoS1DCNN(nn.Module):
     def __init__(self):
         super().__init__()
@@ -293,10 +284,6 @@ model = DDoS1DCNN().to(device)
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
 
-
-# -----------------------------
-# 4) Training loop
-# -----------------------------
 def train_epoch():
     model.train()
     total_loss = 0.0
@@ -337,11 +324,6 @@ for ep in range(1, epochs+1):
     print(f"Epoch {ep}/{epochs} - loss={l:.4f} - test_acc={acc:.4f}")
 
 
-# -----------------------------
-# 5) Visualizations (save PNGs)
-# -----------------------------
-
-# 5.1 Traffic example plot (one normal vs one attack window, UN-normalized for readability)
 X_raw, y_raw = make_windows(n_samples=200, window_size=60, attack_ratio=0.5, seed=11)
 normal_ex = X_raw[y_raw == 0][0]
 attack_ex = X_raw[y_raw == 1][0]
@@ -357,7 +339,6 @@ plt.tight_layout()
 plt.savefig("traffic_windows.png", dpi=200)
 plt.show()
 
-# 5.2 Loss curve
 plt.figure()
 plt.plot(losses)
 plt.title("Training loss over epochs")
@@ -367,7 +348,6 @@ plt.tight_layout()
 plt.savefig("loss_curve.png", dpi=200)
 plt.show()
 
-# 5.3 Confusion matrix (no sklearn needed)
 acc, preds, trues = evaluate()
 cm = np.zeros((2, 2), dtype=int)
 for t, p in zip(trues, preds):
