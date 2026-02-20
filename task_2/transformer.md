@@ -65,6 +65,14 @@ Residual connections stabilize training and prevent vanishing gradients.
 
 ---
 
+## Training Objective
+
+Transformers are typically trained using next-token prediction or masked language modeling objectives. 
+In cybersecurity applications, this allows the model to learn relationships between traffic events and predict anomalous patterns. 
+By minimizing cross-entropy loss during training, the model learns contextual dependencies between network features.
+
+---
+
 # Application in Cybersecurity: Intrusion Detection
 
 Traditional intrusion detection systems rely on:
@@ -90,8 +98,8 @@ In this context:
   - Protocol type
   - Abnormal burst behavior
 
-Studies show that Transformer-based intrusion detection models achieve accuracy above 97%, outperforming CNN, LSTM, and Random Forest models.
-
+Studies show that Transformer-based intrusion detection models achieve accuracy above 97%, outperforming CNN, LSTM, and Random Forest models. Compared to RNNs and LSTMs, Transformers handle long-range dependencies more effectively because any feature can attend to any other feature directly. 
+Additionally, parallel computation enables faster training on large-scale cybersecurity datasets.
 Attention heatmaps also improve interpretability by highlighting which features contributed most to classification.
 
 ---
