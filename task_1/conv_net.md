@@ -6,6 +6,10 @@ Unlike traditional fully connected neural networks, CNNs preserve the spatial re
 
 CNNs are computationally efficient because they process local regions of the image instead of connecting every pixel to every neuron. This reduces the number of learnable parameters and improves scalability.
 
+
+![1111](https://github.com/user-attachments/assets/133ccb80-72a2-46ef-87fe-c31385a58927)
+
+
 ---
 
 ## Structure of a CNN Architecture
@@ -116,6 +120,9 @@ The output layer converts scores into probabilities.
 ---
 
 ## How Convolution Works
+
+![222](https://github.com/user-attachments/assets/d3f12ee7-b168-4d05-9b40-288646c8e535)
+
 
 The convolution operation:
 1. A filter (kernel) slides across the image.
