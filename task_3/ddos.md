@@ -1,7 +1,7 @@
 # DDoS Attack Analysis Report
 
 ## Log File
-The log file is available [here](e_sharia25_37142_server.log) (uploaded in this folder). It was downloaded from http://max.ge/aiml_final/e_sharia25_37142_server.log.
+The log file is available https://github.com/elenesharia/aimlFin2026_e_sharia25/blob/main/task_3/e_sharia25_37142_server.log . It was downloaded from http://max.ge/aiml_final/e_sharia25_37142_server.log.
 
 ## Analysis Overview
 - Parsed log entries to extract timestamps, IPs, requests, and status codes.
