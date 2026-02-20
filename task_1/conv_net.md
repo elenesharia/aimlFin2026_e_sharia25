@@ -376,6 +376,12 @@ print("Saved: traffic_windows.png, loss_curve.png, confusion_matrix.png")
 
 ---
 
+## Conclusion
+
+This example demonstrates how Convolutional Neural Networks can be applied to cybersecurity problems such as DDoS detection. By treating traffic windows as one-dimensional signals, a 1D CNN can automatically learn temporal patterns such as bursts and sustained spikes. The synthetic dataset illustrates how CNNs detect abnormal traffic behavior without manual feature engineering. This highlights the flexibility of convolutional networks beyond traditional image classification tasks.
+
+---
+
 <img width="1280" height="960" alt="confusion_matrix" src="https://github.com/user-attachments/assets/775d7a92-a579-452f-9b59-814a1c1e4b92" />
 
 <img width="1280" height="960" alt="loss_curve" src="https://github.com/user-attachments/assets/94c37f75-cac2-44d1-8ef3-9086d6f6a6f5" />
