@@ -91,5 +91,18 @@ The plot shows request counts over time, the linear regression trendline, and hi
 
 <img width="1200" height="600" alt="ddos_visualization" src="https://github.com/user-attachments/assets/7cd0016d-4523-474b-95ba-63a379b34efc" />
 
+The complete source code is available in the file - https://github.com/elenesharia/aimlFin2026_e_sharia25/blob/main/task_3/analyze_ddos.py
+
+## Reproduction Steps
+
+1. Clone/download the repository or navigate to the `task_3` folder.
+2. Ensure Python 3.x and required libraries are installed:pip install pandas numpy scipy matplotlib
+3. 3. Place the log file `e_sharia25_37142_server.log` in the same folder as the script.
+4. Run the analysis script: python analyze_ddos.py
+5. 5. The script will:
+- Parse the log
+- Perform linear regression
+- Detect and print DDoS intervals
+- Generate `ddos_visualization.png`
 
 
