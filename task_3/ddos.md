@@ -26,7 +26,7 @@ import re
 from datetime import datetime
 
 def parse_log_line(line):
-    pattern = r'(\S+) - - $$   (.*?)   $$ "(.*?)" (\d+) (\S+) "(.*?)" "(.*?)" (\d+)'
+    pattern = r'(\S+) - - \[([^\]]+)\] "([^"]+)" (\d{3}) (\S+) "([^"]*)" "([^"]*)" (\d+)'
     match = re.match(pattern, line)
     if match:
         ip, timestamp_str, request, status, bytes_sent, referer, user_agent, extra = match.groups()
