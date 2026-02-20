@@ -36,3 +36,14 @@ def parse_log_line(line):
         except ValueError:
             return None
     return None
+
+
+
+---
+# Visualizations
+The plot shows request counts over time, the linear regression trendline, and highlighted DDoS intervals in yellow.
+
+<img width="1200" height="600" alt="ddos_visualization" src="https://github.com/user-attachments/assets/7cd0016d-4523-474b-95ba-63a379b34efc" />
+
+
+
