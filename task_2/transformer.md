@@ -2,9 +2,7 @@
 
 ## Introduction
 
-Transformers are a modern deep learning architecture introduced in the 2017 paper *“Attention Is All You Need”*. They revolutionized sequence modeling by replacing recurrence (RNNs, LSTMs) and convolution with a single powerful concept: **attention**.
-
-Unlike recurrent neural networks, which process tokens sequentially, Transformers process all tokens in parallel. This enables efficient training on GPUs and better modeling of long-range dependencies. Today, Transformer architectures power models such as BERT, GPT, and T5 and are widely used in natural language processing, computer vision, and cybersecurity applications.
+Transformers are a modern deep learning architecture. Unlike recurrent neural networks, which process tokens sequentially, Transformers process all tokens in parallel. This enables efficient training on GPUs and better modeling of long-range dependencies. Today, Transformer architectures power models such as BERT, GPT, and T5 and are widely used in natural language processing, computer vision, and cybersecurity applications.
 
 ---
 
@@ -20,9 +18,8 @@ Each token in a sequence is transformed into three vectors:
 
 The attention score between tokens is computed as:
 
-\[
-Attention(Q,K,V) = softmax\left(\frac{QK^T}{\sqrt{d_k}}\right)V
-\]
+<img width="909" height="243" alt="attention" src="https://github.com/user-attachments/assets/45439d45-8022-4c44-b1ef-94bda6e716e7" />
+
 
 This mechanism allows every token to attend to every other token directly, capturing contextual relationships regardless of distance.
 
@@ -48,13 +45,8 @@ Since Transformers process tokens in parallel, they require positional informati
 
 The original Transformer uses sinusoidal positional encoding:
 
-\[
-PE(pos, 2i) = sin\left(\frac{pos}{10000^{2i/d}}\right)
-\]
+<img width="674" height="250" alt="pe" src="https://github.com/user-attachments/assets/8566caed-770f-4fa8-91a7-2b69fc59bae1" />
 
-\[
-PE(pos, 2i+1) = cos\left(\frac{pos}{10000^{2i/d}}\right)
-\]
 
 This encoding ensures each position has a unique pattern across dimensions, allowing the model to understand sequence order in network traffic data.
 
