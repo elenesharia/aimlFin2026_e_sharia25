@@ -97,9 +97,9 @@ The complete source code is available in the file - https://github.com/eleneshar
 
 1. Clone/download the repository or navigate to the `task_3` folder.
 2. Ensure Python 3.x and required libraries are installed:pip install pandas numpy scipy matplotlib
-3. 3. Place the log file `e_sharia25_37142_server.log` in the same folder as the script.
+3. Place the log file `e_sharia25_37142_server.log` in the same folder as the script.
 4. Run the analysis script: python analyze_ddos.py
-5. 5. The script will:
+5. The script will:
 - Parse the log
 - Perform linear regression
 - Detect and print DDoS intervals
