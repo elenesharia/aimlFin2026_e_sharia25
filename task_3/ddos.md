@@ -37,10 +37,56 @@ def parse_log_line(line):
             return None
     return None
 
+```
+---
 
+### Regression and Anomaly Detection
+```python
+from scipy import stats
 
+# After creating request_counts DataFrame...
+request_counts['time_numeric'] = (request_counts['timestamp'] - request_counts['timestamp'].min()).dt.total_seconds() / 60
+
+slope, intercept, r_value, p_value, std_err = stats.linregress(request_counts['time_numeric'], request_counts['count'])
+request_counts['predicted'] = intercept + slope * request_counts['time_numeric']
+request_counts['residual'] = request_counts['count'] - request_counts['predicted']
+
+mean_res = request_counts['residual'].mean()
+std_res = request_counts['residual'].std()
+threshold = mean_res + 3 * std_res
+anomalies = request_counts[request_counts['residual'] > threshold].copy()
+
+anomalies['diff'] = anomalies['timestamp'].diff()
+anomalies['group'] = (anomalies['diff'] > pd.Timedelta(minutes=1)).cumsum()
+intervals = []
+for group, data in anomalies.groupby('group'):
+    start = data['timestamp'].min()
+    end = data['timestamp'].max()
+    intervals.append((start, end))
+
+```
+---
+
+# Visualization Code
+```python
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(12, 6))
+plt.plot(request_counts['timestamp'], request_counts['count'], label='Request Count')
+plt.plot(request_counts['timestamp'], request_counts['predicted'], label='Regression Line', color='red')
+for start, end in intervals:
+    plt.axvspan(start, end, color='yellow', alpha=0.5, label='DDoS Interval' if intervals.index((start, end)) == 0 else "")
+plt.xlabel('Time')
+plt.ylabel('Requests per Minute')
+plt.title('Request Volume with Regression and DDoS Anomalies')
+plt.legend()
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('ddos_visualization.png')
+```
 ---
 # Visualizations
+
 The plot shows request counts over time, the linear regression trendline, and highlighted DDoS intervals in yellow.
 
 <img width="1200" height="600" alt="ddos_visualization" src="https://github.com/user-attachments/assets/7cd0016d-4523-474b-95ba-63a379b34efc" />
